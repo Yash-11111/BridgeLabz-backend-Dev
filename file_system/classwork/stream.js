@@ -1,29 +1,29 @@
 // file stream use huge amount of data handle kr skte h and ismein data ko chunks mein baat dete h 
 const fs = require("fs");
 
-// const  readstream = fs.createReadStream("./quote.txt",{
-//     encoding:"utf-8",
-//     highWaterMark:64*1024
-// });
+const  readstream = fs.createReadStream("./quote.txt",{
+    encoding:"utf-8",
+    highWaterMark:64*1024
+});
 
-// readstream.on("data",(chunk)=>{
-//     console.log("chunk mil gya ",chunk.length);
-// })
+readstream.on("data",(chunk)=>{
+    console.log("chunk mil gya ",chunk.length);
+})
 
-// readstream.on("end",()=>{
-//     console.log("file reading complete");
-// });
+readstream.on("end",()=>{
+    console.log("file reading complete");
+});
 
 
 
 // write stream 
 
-// const writeStream=fs.createWriteStream("./panchayat.txt");//agr file pehle se present to over-write kr dega orr agr present nhi h toh nayi file ban jayeigi 
+const writeStream=fs.createWriteStream("./panchayat.txt");//agr file pehle se present to over-write kr dega orr agr present nhi h toh nayi file ban jayeigi 
 
-// writeStream.write("hello bhai kya hall h bsdk padh shi se\n");
-// writeStream.write("chal chal ab roo  mt \n");
+writeStream.write("hello bhai kya hall h bsdk padh shi se\n");
+writeStream.write("chal chal ab roo  mt \n");
 
-// writeStream.end();
+writeStream.end();
 
 
 // Transform Stream  
@@ -41,9 +41,9 @@ const upperCaseTransform = new Transform({
 
 
 //pipe flow 
-// fs.createReadStream("./panchayat.txt")
-// .pipe(upperCaseTransform)
-// .pipe(fs.createWriteStream("./quote.txt"));
+fs.createReadStream("./panchayat.txt")
+.pipe(upperCaseTransform)
+.pipe(fs.createWriteStream("./quote.txt"));
 
 
 // //  file coping using stream
